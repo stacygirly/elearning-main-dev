@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend # Path to the backend directory
+      dockerfile: Dockerfile # Your Dockerfile for the backend service
+    container_name: express-backend
+    ports:
+      - "3000:3000" # Expose port 3000 (or whichever port your Express app uses)
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGO_URI=${mongodb+srv://admin:admin123@elearning.76hcjzy.mongodb.net/?retryWrites=true&w=majority&appName=eLearning} # Example if you're using MongoDB
+    networks:
+      - app-network
